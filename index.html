@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;"><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🚀 مغامرة ألكسندر الفضائية المضحكة - عيد الميلاد الأول 🎉</title>
@@ -83,6 +83,13 @@
 
         .planet {
             animation: rotate 20s linear infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .planet:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
         }
 
         @keyframes rotate {
@@ -319,9 +326,196 @@
             pointer-events: auto;
         }
 
+        /* Planet Explosion Effects */
+        .planet-explode {
+            animation: planet-explosion 1.5s ease-out forwards;
+        }
+
+        @keyframes planet-explosion {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(2) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        .explosion-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: particle-explosion 2s ease-out forwards;
+        }
+
+        @keyframes particle-explosion {
+            0% { 
+                transform: scale(1) rotate(0deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: scale(0) rotate(720deg); 
+                opacity: 0; 
+            }
+        }
+
+        .shockwave {
+            position: fixed;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 998;
+            animation: shockwave-expand 1s ease-out forwards;
+        }
+
+        @keyframes shockwave-expand {
+            0% { 
+                width: 0; 
+                height: 0; 
+                opacity: 1; 
+                border-width: 3px;
+            }
+            100% { 
+                width: 300px; 
+                height: 300px; 
+                opacity: 0; 
+                border-width: 0;
+            }
+        }
+
+        /* Enhanced Interactive Elements */
+        .interactive-planet {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .interactive-planet:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+        }
+
+        .interactive-planet::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .interactive-planet:hover::after {
+            opacity: 1;
+        }
+
+        /* Meteor Shower Effects */
+        .meteor {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: linear-gradient(45deg, #fff, #ffeb3b);
+            border-radius: 50%;
+            animation: meteor-fall 3s linear forwards;
+            pointer-events: none;
+            z-index: 997;
+        }
+
+        @keyframes meteor-fall {
+            0% {
+                transform: translate(-100px, -100px) rotate(45deg);
+                opacity: 1;
+                box-shadow: 0 0 10px #fff, 0 0 20px #ffeb3b;
+            }
+            100% {
+                transform: translate(100vw, 100vh) rotate(45deg);
+                opacity: 0;
+                box-shadow: 0 0 5px #fff;
+            }
+        }
+
+        .meteor::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -20px;
+            width: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, #ffeb3b);
+            border-radius: 1px;
+        }
+
+        /* Cosmic Portal Effect */
+        .cosmic-portal {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(147, 51, 234, 0.8) 0%,
+                rgba(59, 130, 246, 0.6) 30%,
+                rgba(16, 185, 129, 0.4) 60%,
+                transparent 100%);
+            animation: portal-spin 2s linear infinite, portal-pulse 3s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 996;
+        }
+
+        @keyframes portal-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes portal-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Nebula Cloud Effect */
+        .nebula-cloud {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center,
+                rgba(147, 51, 234, 0.3) 0%,
+                rgba(236, 72, 153, 0.2) 40%,
+                rgba(59, 130, 246, 0.1) 70%,
+                transparent 100%);
+            animation: nebula-drift 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 995;
+        }
+
+        @keyframes nebula-drift {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            25% { transform: translate(50px, -30px) scale(1.1); opacity: 0.8; }
+            50% { transform: translate(-30px, 50px) scale(0.9); opacity: 0.4; }
+            75% { transform: translate(-50px, -20px) scale(1.05); opacity: 0.7; }
+        }
+
+        /* Enhanced Rocket Trail */
+        .rocket-trail-enhanced {
+            position: fixed;
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(to bottom, 
+                #ff6b35 0%, 
+                #f7931e 30%, 
+                #ffd23f  60%, 
+                transparent 100%);
+            border-radius: 2px;
+            animation: trail-flicker 0.1s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 994;
+        }
+
+        @keyframes trail-flicker {
+            0%, 100% { opacity: 1; transform: scaleY(1); }
+            50% { opacity: 0.7; transform: scaleY(1.2); }
+        }
+
         /* Mobile Responsive Design */
         @media (max-width: 768px) {
-            /* Adjust floating elements for mobile */
             .floating-alexander {
                 top: 8%;
                 right: 5%;
@@ -342,7 +536,6 @@
                 height: 10px !important;
             }
             
-            /* Reduce floating elements that might obstruct content */
             .absolute.top-10.left-10,
             .absolute.top-20.right-20,
             .absolute.bottom-20.left-20,
@@ -350,7 +543,6 @@
                 display: none;
             }
             
-            /* Keep only essential floating elements */
             .absolute.top-1\\/3.left-1\\/4,
             .absolute.top-2\\/3.right-1\\/3 {
                 font-size: 1.5rem !important;
@@ -359,13 +551,11 @@
         }
 
         @media (max-width: 480px) {
-            /* Extra small screens */
             .floating-alexander,
             .floating-alexander-2 {
                 display: none;
             }
             
-            /* Hide all floating background elements on very small screens */
             .absolute.top-1\\/3.left-1\\/4,
             .absolute.top-2\\/3.right-1\\/3,
             .absolute.top-1\\/4.left-1\\/2,
@@ -470,8 +660,51 @@
                 box-shadow: 0 0 50px rgba(59, 130, 246, 1);
             }
         }
+
+        /* Planet Regeneration */
+        .planet-regenerate {
+            animation: planet-rebirth 2s ease-out forwards;
+        }
+
+        @keyframes planet-rebirth {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+
+        /* UFO Flying Effect */
+        .ufo-flight {
+            position: fixed;
+            font-size: 2.5rem;
+            animation: ufo-fly 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 993;
+        }
+
+        @keyframes ufo-fly {
+            0% { 
+                transform: translate(-100px, 50vh) rotate(0deg); 
+                opacity: 1; 
+            }
+            25% { 
+                transform: translate(25vw, 30vh) rotate(15deg); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: translate(50vw, 70vh) rotate(-10deg); 
+                opacity: 1; 
+            }
+            75% { 
+                transform: translate(75vw, 40vh) rotate(20deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translate(calc(100vw + 100px), 60vh) rotate(0deg); 
+                opacity: 0; 
+            }
+        }
     </style>
-<script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script></head>
+<script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script><script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script></head>
 <body class="min-h-screen space-gradient text-white overflow-x-hidden">
     <!-- Animated Stars Background -->
     <div class="stars">
@@ -487,13 +720,13 @@
 
     <!-- Main Invitation Container -->
     <div class="min-h-screen flex items-center justify-center p-4 relative">
-        <!-- Floating Elements -->
-        <div class="absolute top-10 left-10 text-6xl float">🚀</div>
-        <div class="absolute top-20 right-20 text-5xl float-delayed">🪐</div>
-        <div class="absolute bottom-20 left-20 text-4xl rocket">🛸</div>
-        <div class="absolute bottom-10 right-10 text-5xl planet">🌍</div>
-        <div class="absolute top-1/3 left-1/4 text-3xl float">⭐</div>
-        <div class="absolute top-2/3 right-1/3 text-3xl float-delayed">🌙</div>
+        <!-- Interactive Floating Elements -->
+        <div class="absolute top-10 left-10 text-6xl float interactive-emoji" onclick="createMeteorShower()">🚀</div>
+        <div class="absolute top-20 right-20 text-5xl float-delayed interactive-planet" onclick="explodePlanet(this)">🪐</div>
+        <div class="absolute bottom-20 left-20 text-4xl rocket interactive-emoji" onclick="createCosmicPortal(this)">🛸</div>
+        <div class="absolute bottom-10 right-10 text-5xl planet interactive-planet" onclick="explodePlanet(this)">🌍</div>
+        <div class="absolute top-1/3 left-1/4 text-3xl float interactive-emoji" onclick="createStarBurst(this)">⭐</div>
+        <div class="absolute top-2/3 right-1/3 text-3xl float-delayed interactive-emoji" onclick="createNebulaCloud(this)">🌙</div>
 
         <!-- Fun Interactive Buttons Bar -->
         <div class="absolute top-4 left-4 flex gap-2 z-50 flex-wrap">
@@ -501,6 +734,8 @@
             <button id="musicBtn" class="party-button text-2xl md:text-3xl p-2 md:p-3 bg-pink-400 rounded-full hover:bg-pink-300 transition-all duration-300 min-h-[44px] min-w-[44px]">🎵</button>
             <button id="alienBtn" class="party-button text-2xl md:text-3xl p-2 md:p-3 bg-green-400 rounded-full hover:bg-green-300 transition-all duration-300 min-h-[44px] min-w-[44px]">👽</button>
             <button id="rocketBtn" class="party-button text-2xl md:text-3xl p-2 md:p-3 bg-blue-400 rounded-full hover:bg-blue-300 transition-all duration-300 min-h-[44px] min-w-[44px]">🚀</button>
+            <button id="meteorBtn" class="party-button text-2xl md:text-3xl p-2 md:p-3 bg-purple-400 rounded-full hover:bg-purple-300 transition-all duration-300 min-h-[44px] min-w-[44px]">☄️</button>
+            <button id="galaxyBtn" class="party-button text-2xl md:text-3xl p-2 md:p-3 bg-indigo-400 rounded-full hover:bg-indigo-300 transition-all duration-300 min-h-[44px] min-w-[44px]">🌌</button>
         </div>
 
         <!-- Main Invitation Card -->
@@ -529,7 +764,7 @@
                 <!-- Alexander's Photo with Space Helmet Effect -->
                 <div class="relative">
                     <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-blue-400 shadow-xl space-helmet" onclick="alexanderPhotoEffect()">
-                        <img src="https://pfst.cf2.poecdn.net/base/image/3a61f93127a34838983e8cb7d3129eea5b323c073d538c6b511ead84ef53d93e?w=329&amp;h=373" alt="ألكسندر" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                        <img src="https://pfst.cf2.poecdn.net/base/image/57a7632e2c153361b55d1c37fea4d5d623e3da3ccbeaa14bbe7c20d1e48e1d07?w=421&amp;h=421" alt="ألكسندر" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
                     </div>
                     <!-- Space Helmet Glass Effect -->
                     <div class="absolute inset-0 w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-blue-400/30 via-transparent to-white/20 pointer-events-none helmet-shine"></div>
@@ -609,14 +844,14 @@
 
     <!-- Additional Floating Elements -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 text-2xl float opacity-70">☄️</div>
-        <div class="absolute top-3/4 left-1/5 text-3xl float-delayed opacity-60">🛰️</div>
-        <div class="absolute top-1/2 right-1/4 text-2xl rocket opacity-70">👽</div>
+        <div class="absolute top-1/4 left-1/2 text-2xl float opacity-70 interactive-emoji pointer-events-auto cursor-pointer" onclick="createMeteorShower()">☄️</div>
+        <div class="absolute top-3/4 left-1/5 text-3xl float-delayed opacity-60 interactive-emoji pointer-events-auto cursor-pointer" onclick="createUFOFlight()">🛰️</div>
+        <div class="absolute top-1/2 right-1/4 text-2xl rocket opacity-70 interactive-emoji pointer-events-auto cursor-pointer" onclick="alienDance()">👽</div>
         
         <!-- Floating Alexander Astronaut -->
-        <div class="absolute floating-alexander" onclick="alexanderFloatEffect()">
+        <div class="absolute floating-alexander pointer-events-auto" onclick="alexanderFloatEffect()">
             <div class="relative astronaut-container">
-                <img src="https://pfst.cf2.poecdn.net/base/image/3a61f93127a34838983e8cb7d3129eea5b323c073d538c6b511ead84ef53d93e?w=329&amp;h=373" alt="ألكسندر رجل الفضاء" class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-blue-300 shadow-lg astronaut-shadow">
+                <img src="https://pfst.cf2.poecdn.net/base/image/57a7632e2c153361b55d1c37fea4d5d623e3da3ccbeaa14bbe7c20d1e48e1d07?w=421&amp;h=421" alt="ألكسندر رجل الفضاء" class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-blue-300 shadow-lg astronaut-shadow">
                 <!-- Space Helmet Effect -->
                 <div class="absolute inset-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-blue-400/40 via-transparent to-white/30 helmet-effect"></div>
                 <!-- Helmet Reflection -->
@@ -627,9 +862,9 @@
         </div>
         
         <!-- Second Floating Alexander (smaller) -->
-        <div class="absolute floating-alexander-2">
+        <div class="absolute floating-alexander-2 pointer-events-auto" onclick="alexanderFloatEffect()">
             <div class="relative astronaut-container-small">
-                <img src="https://pfst.cf2.poecdn.net/base/image/3a61f93127a34838983e8cb7d3129eea5b323c073d538c6b511ead84ef53d93e?w=329&amp;h=373" alt="ألكسندر رجل الفضاء" class="w-12 h-12 rounded-full object-cover border-2 border-purple-300 shadow-md astronaut-shadow-small">
+                <img src="https://pfst.cf2.poecdn.net/base/image/57a7632e2c153361b55d1c37fea4d5d623e3da3ccbeaa14bbe7c20d1e48e1d07?w=421&amp;h=421" alt="ألكسندر رجل الفضاء" class="w-12 h-12 rounded-full object-cover border-2 border-purple-300 shadow-md astronaut-shadow-small">
                 <!-- Small Helmet Effect -->
                 <div class="absolute inset-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-400/40 via-transparent to-white/30 helmet-effect-small"></div>
                 <div class="absolute top-1 left-1 w-2 h-2 rounded-full bg-white/70"></div>
@@ -638,7 +873,7 @@
     </div>
 
     <script>
-        // Dark mode detection (though this design works well in both modes)
+        // Dark mode detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
@@ -650,7 +885,7 @@
             }
         });
 
-        // Add some interactive sparkle effect when clicking
+        // Enhanced click sparkle effect
         document.addEventListener('click', function(e) {
             const sparkle = document.createElement('div');
             sparkle.innerHTML = '✨';
@@ -679,10 +914,244 @@
         `;
         document.head.appendChild(style);
 
-        // Interactive Functions for Fun Kids Activities
+        // PLANET EXPLOSION SYSTEM
+        function explodePlanet(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Add explosion class
+            element.classList.add('planet-explode');
+            
+            // Create shockwave
+            createShockwave(centerX, centerY);
+            
+            // Create explosion particles
+            createExplosionParticles(centerX, centerY);
+            
+            // Play explosion sound
+            playExplosionSound();
+            
+            // Hide the planet temporarily
+            setTimeout(() => {
+                element.style.visibility = 'hidden';
+                element.classList.remove('planet-explode');
+            }, 1500);
+            
+            // Regenerate planet after delay
+            setTimeout(() => {
+                regeneratePlanet(element);
+            }, 3000);
+        }
+
+        function createShockwave(x, y) {
+            const shockwave = document.createElement('div');
+            shockwave.className = 'shockwave';
+            shockwave.style.left = (x - 150) + 'px';
+            shockwave.style.top = (y - 150) + 'px';
+            document.body.appendChild(shockwave);
+            
+            setTimeout(() => shockwave.remove(), 1000);
+        }
+
+        function createExplosionParticles(centerX, centerY) {
+            const particles = ['💥', '⚡', '✨', '🔥', '💫', '⭐', '🌟'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.innerHTML = particles[Math.floor(Math.random() * particles.length)];
+                    particle.className = 'explosion-particle';
+                    particle.style.position = 'fixed';
+                    particle.style.left = centerX + 'px';
+                    particle.style.top = centerY + 'px';
+                    particle.style.fontSize = '1.5rem';
+                    particle.style.zIndex = '999';
+                    
+                    const angle = (i / 20) * 2 * Math.PI;
+                    const distance = 100 + Math.random() * 150;
+                    const targetX = centerX + Math.cos(angle) * distance;
+                    const targetY = centerY + Math.sin(angle) * distance;
+                    
+                    particle.style.setProperty('--target-x', targetX + 'px');
+                    particle.style.setProperty('--target-y', targetY + 'px');
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 2000);
+                }, i * 50);
+            }
+        }
+
+        function regeneratePlanet(element) {
+            element.style.visibility = 'visible';
+            element.classList.add('planet-regenerate');
+            
+            // Create regeneration sparkles
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = '✨';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = (centerX + (Math.random() - 0.5) * 100) + 'px';
+                    sparkle.style.top = (centerY + (Math.random() - 0.5) * 100) + 'px';
+                    sparkle.style.fontSize = '1rem';
+                    sparkle.style.animation = 'sparkle 1s ease-out forwards';
+                    sparkle.style.zIndex = '998';
+                    sparkle.style.pointerEvents = 'none';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, i * 100);
+            }
+            
+            setTimeout(() => {
+                element.classList.remove('planet-regenerate');
+            }, 2000);
+        }
+
+        // METEOR SHOWER SYSTEM
+        function createMeteorShower() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const meteor = document.createElement('div');
+                    meteor.className = 'meteor';
+                    meteor.style.left = Math.random() * 100 + 'vw';
+                    meteor.style.top = -50 + 'px';
+                    meteor.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(meteor);
+                    
+                    setTimeout(() => meteor.remove(), 3000);
+                }, i * 200);
+            }
+            
+            // Add sound effect
+            playMeteorSound();
+        }
+
+        // COSMIC PORTAL SYSTEM
+        function createCosmicPortal(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const portal = document.createElement('div');
+            portal.className = 'cosmic-portal';
+            portal.style.left = (centerX - 50) + 'px';
+            portal.style.top = (centerY - 50) + 'px';
+            document.body.appendChild(portal);
+            
+            // Create portal particles
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.innerHTML = '✨';
+                    particle.style.position = 'fixed';
+                    particle.style.left = centerX + 'px';
+                    particle.style.top = centerY + 'px';
+                    particle.style.fontSize = '1.2rem';
+                    particle.style.animation = 'portal-particle 2s ease-out forwards';
+                    particle.style.zIndex = '997';
+                    particle.style.pointerEvents = 'none';
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 2000);
+                }, i * 250);
+            }
+            
+            setTimeout(() => portal.remove(), 5000);
+            playPortalSound();
+        }
+
+        // NEBULA CLOUD SYSTEM
+        function createNebulaCloud(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const nebula = document.createElement('div');
+            nebula.className = 'nebula-cloud';
+            nebula.style.left = (centerX - 100) + 'px';
+            nebula.style.top = (centerY - 100) + 'px';
+            document.body.appendChild(nebula);
+            
+            setTimeout(() => nebula.remove(), 15000);
+            playNebulaSound();
+        }
+
+        // UFO FLIGHT SYSTEM
+        function createUFOFlight() {
+            const ufo = document.createElement('div');
+            ufo.innerHTML = '🛸';
+            ufo.className = 'ufo-flight';
+            ufo.style.left = '-100px';
+            ufo.style.top = '50vh';
+            document.body.appendChild(ufo);
+            
+            // Add UFO beam effect
+            setTimeout(() => {
+                const beam = document.createElement('div');
+                beam.style.position = 'fixed';
+                beam.style.width = '50px';
+                beam.style.height = '200px';
+                beam.style.background = 'linear-gradient(to bottom, rgba(255,255,0,0.6), transparent)';
+                beam.style.left = '25vw';
+                beam.style.top = '35vh';
+                beam.style.pointerEvents = 'none';
+                beam.style.zIndex = '992';
+                beam.style.animation = 'beam-flicker 1s ease-in-out infinite';
+                document.body.appendChild(beam);
+                
+                setTimeout(() => beam.remove(), 2000);
+            }, 2000);
+            
+            setTimeout(() => ufo.remove(), 8000);
+            playUFOSound();
+        }
+
+        // STAR BURST SYSTEM
+        function createStarBurst(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const stars = ['⭐', '✨', '🌟', '💫', '🌠'];
+            
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.innerHTML = stars[Math.floor(Math.random() * stars.length)];
+                    star.style.position = 'fixed';
+                    star.style.left = centerX + 'px';
+                    star.style.top = centerY + 'px';
+                    star.style.fontSize = '1.5rem';
+                    star.style.animation = 'star-burst 2s ease-out forwards';
+                    star.style.zIndex = '996';
+                    star.style.pointerEvents = 'none';
+                    
+                    const angle = (i / 12) * 2 * Math.PI;
+                    const distance = 80 + Math.random() * 80;
+                    const targetX = centerX + Math.cos(angle) * distance;
+                    const targetY = centerY + Math.sin(angle) * distance;
+                    
+                    star.style.setProperty('--target-x', targetX + 'px');
+                    star.style.setProperty('--target-y', targetY + 'px');
+                    
+                    document.body.appendChild(star);
+                    
+                    setTimeout(() => star.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        // Enhanced Interactive Functions
         function createStarShower() {
             const stars = ['⭐', '✨', '🌟', '💫', '🌠'];
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
                     const star = document.createElement('div');
                     star.innerHTML = stars[Math.floor(Math.random() * stars.length)];
@@ -694,21 +1163,25 @@
                     setTimeout(() => star.remove(), 4000);
                 }, i * 100);
             }
+            playStarSound();
         }
 
         function celebrateAlexander() {
             createConfetti();
-            createEmojiExplosion(['🎉', '🎊', '🥳', '🎈', '🎂', '🍰']);
+            createMeteorShower();
+            createEmojiExplosion(['🎉', '🎊', '🥳', '🎈', '🎂', '🍰', '👨‍🚀', '🚀']);
             document.querySelector('.bg-gradient-to-r').classList.add('shake');
             setTimeout(() => {
                 document.querySelector('.bg-gradient-to-r').classList.remove('shake');
             }, 500);
+            playPartySound();
         }
 
         function birthdayExplosion() {
             createConfetti();
+            createStarBurst(document.querySelector('.bg-red-500'));
             createEmojiExplosion(['🎂', '🕯️', '🎈', '🎊', '🥳', '🍰', '🧁']);
-            playSound('🎵');
+            playPartySound();
         }
 
         function balloonFloat() {
@@ -732,6 +1205,7 @@
             createEmojiExplosion(['🕯️', '💨', '✨', '🎂'], 'blow');
             setTimeout(() => {
                 createEmojiExplosion(['🎉', '🎊', '🥳']);
+                createStarBurst(document.querySelector('.text-4xl.dancing'));
             }, 1000);
         }
 
@@ -742,22 +1216,36 @@
             rocket.style.left = '50vw';
             rocket.style.bottom = '10vh';
             rocket.style.animation = 'rocket-launch 3s ease-out forwards';
+            
+            // Add rocket trail
+            const trail = document.createElement('div');
+            trail.className = 'rocket-trail-enhanced';
+            trail.style.left = '50vw';
+            trail.style.bottom = '10vh';
+            document.body.appendChild(trail);
+            
             document.body.appendChild(rocket);
             
             setTimeout(() => {
-                createEmojiExplosion(['💥', '⭐', '✨', '🌟'], 'explosion');
+                createExplosionParticles(window.innerWidth / 2, 100);
+                createShockwave(window.innerWidth / 2, 100);
                 rocket.remove();
+                trail.remove();
             }, 2500);
+            
+            playRocketSound();
         }
 
         function alienDance() {
             createEmojiExplosion(['👽', '🛸', '🌌', '⭐'], 'alien');
-            playSound('🎵');
+            createUFOFlight();
+            playAlienSound();
         }
 
         function makeEmojiDance(element) {
             element.classList.add('shake');
             createEmojiExplosion(['🤖', '⚙️', '🔧', '💫']);
+            createStarBurst(element);
             setTimeout(() => {
                 element.classList.remove('shake');
             }, 500);
@@ -774,12 +1262,13 @@
             };
             
             createEmojiExplosion(surprises[emoji] || [emoji], 'game');
+            createStarBurst(event.target);
             playRandomSound();
         }
 
         function createConfetti() {
             const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f7dc6f', '#bb8fce', '#82e0aa'];
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
@@ -789,7 +1278,7 @@
                     document.body.appendChild(confetti);
                     
                     setTimeout(() => confetti.remove(), 3000);
-                }, i * 50);
+                }, i * 30);
             }
         }
 
@@ -808,7 +1297,7 @@
                     emojiElement.style.zIndex = '1000';
                     
                     const angle = (index / emojis.length) * 2 * Math.PI;
-                    const distance = 100 + Math.random() * 100;
+                    const distance = 150 + Math.random() * 150;
                     const targetX = center.x + Math.cos(angle) * distance;
                     const targetY = center.y + Math.sin(angle) * distance;
                     
@@ -823,8 +1312,254 @@
             });
         }
 
+        // Enhanced Sound Effects
+        let audioContext;
+        
+        function initAudioContext() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioContext;
+        }
+
+        function playExplosionSound() {
+            try {
+                const ctx = initAudioContext();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                oscillator.frequency.setValueAtTime(50, ctx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.1);
+                oscillator.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.3);
+                
+                gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 0.3);
+            } catch (e) {
+                playSound('💥');
+            }
+        }
+
+        function playMeteorSound() {
+            try {
+                const ctx = initAudioContext();
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const oscillator = ctx.createOscillator();
+                        const gainNode = ctx.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(ctx.destination);
+                        
+                        oscillator.frequency.setValueAtTime(800 + i * 200, ctx.currentTime);
+                        oscillator.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.2);
+                        
+                        gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+                        
+                        oscillator.start(ctx.currentTime);
+                        oscillator.stop(ctx.currentTime + 0.2);
+                    }, i * 100);
+                }
+            } catch (e) {
+                playSound('☄️');
+            }
+        }
+
+        function playPortalSound() {
+            try {
+                const ctx = initAudioContext();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                oscillator.frequency.setValueAtTime(300, ctx.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.5);
+                oscillator.frequency.linearRampToValueAtTime(300, ctx.currentTime + 1);
+                
+                gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 1);
+            } catch (e) {
+                playSound('🌀');
+            }
+        }
+
+        function playNebulaSound() {
+            try {
+                const ctx = initAudioContext();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                oscillator.frequency.setValueAtTime(150, ctx.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(250, ctx.currentTime + 2);
+                
+                gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 1);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 2);
+            } catch (e) {
+                playSound('🌌');
+            }
+        }
+
+        function playUFOSound() {
+            try {
+                const ctx = initAudioContext();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                oscillator.frequency.setValueAtTime(400, ctx.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.2);
+                oscillator.frequency.linearRampToValueAtTime(300, ctx.currentTime + 0.4);
+                oscillator.frequency.linearRampToValueAtTime(500, ctx.currentTime + 0.6);
+                
+                gainNode.gain.setValueAtTime(0.15, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 0.6);
+            } catch (e) {
+                playSound('🛸');
+            }
+        }
+
+        function playStarSound() {
+            try {
+                const ctx = initAudioContext();
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const oscillator = ctx.createOscillator();
+                        const gainNode = ctx.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(ctx.destination);
+                        
+                        oscillator.frequency.setValueAtTime(800 + i * 100, ctx.currentTime);
+                        gainNode.gain.setValueAtTime(0.08, ctx.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                        
+                        oscillator.start(ctx.currentTime);
+                        oscillator.stop(ctx.currentTime + 0.3);
+                    }, i * 50);
+                }
+            } catch (e) {
+                playSound('⭐');
+            }
+        }
+
+        function playSpaceSound() {
+            try {
+                const ctx = initAudioContext();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                oscillator.frequency.setValueAtTime(800, ctx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.5);
+                
+                gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 0.5);
+                
+                playSound('🔊');
+            } catch (e) {
+                playSound('🚀');
+            }
+        }
+
+        function playRocketSound() {
+            try {
+                const ctx = initAudioContext();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                oscillator.frequency.setValueAtTime(100, ctx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(1000, ctx.currentTime + 1);
+                
+                gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 1);
+            } catch (e) {
+                playSound('🚀');
+            }
+        }
+
+        function playAlienSound() {
+            try {
+                const ctx = initAudioContext();
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                oscillator.frequency.setValueAtTime(400, ctx.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(800, ctx.currentTime + 0.1);
+                oscillator.frequency.linearRampToValueAtTime(200, ctx.currentTime + 0.2);
+                oscillator.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.3);
+                
+                gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 0.3);
+            } catch (e) {
+                playSound('👽');
+            }
+        }
+
+        function playPartySound() {
+            try {
+                const ctx = initAudioContext();
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const oscillator = ctx.createOscillator();
+                        const gainNode = ctx.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(ctx.destination);
+                        
+                        oscillator.frequency.setValueAtTime(600 + i * 200, ctx.currentTime);
+                        gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+                        
+                        oscillator.start(ctx.currentTime);
+                        oscillator.stop(ctx.currentTime + 0.2);
+                    }, i * 100);
+                }
+            } catch (e) {
+                playSound('🎉');
+            }
+        }
+
         function playSound(emoji) {
-            // Visual sound representation
             const soundElement = document.createElement('div');
             soundElement.innerHTML = emoji;
             soundElement.style.position = 'fixed';
@@ -843,26 +1578,41 @@
             playSound(sounds[Math.floor(Math.random() * sounds.length)]);
         }
 
-        // Button Event Listeners
+        // Enhanced Button Event Listeners
         document.getElementById('partyBtn').addEventListener('click', () => {
             createConfetti();
+            createMeteorShower();
             createEmojiExplosion(['🎉', '🎊', '🥳', '🎈', '🎂']);
-            playSound('🎉');
+            playPartySound();
         });
 
         document.getElementById('musicBtn').addEventListener('click', () => {
             createEmojiExplosion(['🎵', '🎶', '🎤', '🎸', '🥁']);
-            playSound('🎵');
+            createStarBurst(document.getElementById('musicBtn'));
+            playSpaceSound();
         });
 
         document.getElementById('alienBtn').addEventListener('click', () => {
             createEmojiExplosion(['👽', '🛸', '🌌', '👾', '🌟']);
-            alienDance();
+            createUFOFlight();
+            playAlienSound();
         });
 
         document.getElementById('rocketBtn').addEventListener('click', () => {
             launchRocket();
-            playSound('🚀');
+            createMeteorShower();
+        });
+
+        document.getElementById('meteorBtn').addEventListener('click', () => {
+            createMeteorShower();
+            createEmojiExplosion(['☄️', '💫', '⭐', '🌟', '✨']);
+        });
+
+        document.getElementById('galaxyBtn').addEventListener('click', () => {
+            createNebulaCloud(document.getElementById('galaxyBtn'));
+            createStarShower();
+            createEmojiExplosion(['🌌', '🌟', '⭐', '✨', '💫']);
+            playNebulaSound();
         });
 
         // Add additional animations
@@ -888,15 +1638,23 @@
                 50% { transform: translate(var(--target-x, 0), var(--target-y, 0)) scale(1.5) rotate(360deg); opacity: 1; }
                 100% { transform: translate(var(--target-x, 0), var(--target-y, 0)) scale(0) rotate(720deg); opacity: 0; }
             }
+
+            @keyframes star-burst {
+                0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+                100% { transform: translate(var(--target-x, 0), var(--target-y, 0)) scale(0) rotate(360deg); opacity: 0; }
+            }
+
+            @keyframes portal-particle {
+                0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+                100% { transform: translate(var(--target-x, 0), var(--target-y, 0)) scale(0) rotate(180deg); opacity: 0; }
+            }
+
+            @keyframes beam-flicker {
+                0%, 100% { opacity: 0.6; transform: scaleY(1); }
+                50% { opacity: 1; transform: scaleY(1.1); }
+            }
         `;
         document.head.appendChild(additionalStyles);
-
-        // Auto-celebration every 10 seconds
-        setInterval(() => {
-            if (Math.random() > 0.5) {
-                createStarShower();
-            }
-        }, 10000);
 
         // Alexander's Photo Special Effects
         function alexanderPhotoEffect() {
@@ -905,6 +1663,7 @@
             photo.querySelector('img').classList.add('photo-zoom');
             
             createEmojiExplosion(['👨‍🚀', '⭐', '✨', '🚀', '🌟'], 'default');
+            createStarBurst(photo);
             playSpaceSound();
             
             setTimeout(() => {
@@ -913,178 +1672,17 @@
             }, 1000);
         }
 
-        // Space Sound Effects using Web Audio API
-        let audioContext;
-        
-        function initAudioContext() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            return audioContext;
-        }
-
-        function playSpaceSound() {
-            try {
-                const ctx = initAudioContext();
-                
-                // Create space beep sound
-                const oscillator = ctx.createOscillator();
-                const gainNode = ctx.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(ctx.destination);
-                
-                oscillator.frequency.setValueAtTime(800, ctx.currentTime);
-                oscillator.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.5);
-                
-                gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
-                
-                oscillator.start(ctx.currentTime);
-                oscillator.stop(ctx.currentTime + 0.5);
-                
-                // Visual feedback
-                playSound('🔊');
-            } catch (e) {
-                // Fallback visual sound
-                playSound('🚀');
-            }
-        }
-
-        function playRocketSound() {
-            try {
-                const ctx = initAudioContext();
-                
-                // Create rocket launch sound
-                const oscillator = ctx.createOscillator();
-                const gainNode = ctx.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(ctx.destination);
-                
-                oscillator.frequency.setValueAtTime(100, ctx.currentTime);
-                oscillator.frequency.exponentialRampToValueAtTime(1000, ctx.currentTime + 1);
-                
-                gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1);
-                
-                oscillator.start(ctx.currentTime);
-                oscillator.stop(ctx.currentTime + 1);
-            } catch (e) {
-                playSound('🚀');
-            }
-        }
-
-        function playAlienSound() {
-            try {
-                const ctx = initAudioContext();
-                
-                // Create alien sound
-                const oscillator = ctx.createOscillator();
-                const gainNode = ctx.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(ctx.destination);
-                
-                oscillator.frequency.setValueAtTime(400, ctx.currentTime);
-                oscillator.frequency.linearRampToValueAtTime(800, ctx.currentTime + 0.1);
-                oscillator.frequency.linearRampToValueAtTime(200, ctx.currentTime + 0.2);
-                oscillator.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.3);
-                
-                gainNode.gain.setValueAtTime(0.2, ctx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
-                
-                oscillator.start(ctx.currentTime);
-                oscillator.stop(ctx.currentTime + 0.3);
-            } catch (e) {
-                playSound('👽');
-            }
-        }
-
-        function playPartySound() {
-            try {
-                const ctx = initAudioContext();
-                
-                // Create party celebration sound
-                for (let i = 0; i < 3; i++) {
-                    setTimeout(() => {
-                        const oscillator = ctx.createOscillator();
-                        const gainNode = ctx.createGain();
-                        
-                        oscillator.connect(gainNode);
-                        gainNode.connect(ctx.destination);
-                        
-                        oscillator.frequency.setValueAtTime(600 + i * 200, ctx.currentTime);
-                        gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-                        gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
-                        
-                        oscillator.start(ctx.currentTime);
-                        oscillator.stop(ctx.currentTime + 0.2);
-                    }, i * 100);
-                }
-            } catch (e) {
-                playSound('🎉');
-            }
-        }
-
-        // Enhanced Button Event Listeners with Space Sounds
-        document.getElementById('partyBtn').addEventListener('click', () => {
-            createConfetti();
-            createEmojiExplosion(['🎉', '🎊', '🥳', '🎈', '🎂']);
-            playPartySound();
-        });
-
-        document.getElementById('musicBtn').addEventListener('click', () => {
-            createEmojiExplosion(['🎵', '🎶', '🎤', '🎸', '🥁']);
-            playSpaceSound();
-        });
-
-        document.getElementById('alienBtn').addEventListener('click', () => {
-            createEmojiExplosion(['👽', '🛸', '🌌', '👾', '🌟']);
-            playAlienSound();
-        });
-
-        document.getElementById('rocketBtn').addEventListener('click', () => {
-            launchRocket();
-            playRocketSound();
-        });
-
-        // Enhanced functions with space sounds
-        const originalLaunchRocket = launchRocket;
-        launchRocket = function() {
-            originalLaunchRocket();
-            playRocketSound();
-        };
-
-        const originalAlienDance = alienDance;
-        alienDance = function() {
-            createEmojiExplosion(['👽', '🛸', '🌌', '⭐'], 'alien');
-            playAlienSound();
-        };
-
-        const originalBirthdayExplosion = birthdayExplosion;
-        birthdayExplosion = function() {
-            createConfetti();
-            createEmojiExplosion(['🎂', '🕯️', '🎈', '🎊', '🥳', '🍰', '🧁']);
-            playPartySound();
-        };
-
-        // Auto-activate audio context on first user interaction
-        document.addEventListener('click', function initAudio() {
-            initAudioContext();
-            document.removeEventListener('click', initAudio);
-        }, { once: true });
-
         // Floating Alexander Special Effects
         function alexanderFloatEffect() {
             const floatingAlexander = document.querySelector('.floating-alexander .astronaut-container img');
             floatingAlexander.classList.add('floating-effect');
             
             createEmojiExplosion(['👨‍🚀', '🚀', '⭐', '✨', '🌟', '💫'], 'default');
+            createMeteorShower();
             playSpaceSound();
             
             // Create space trail effect
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 8; i++) {
                 setTimeout(() => {
                     const trail = document.createElement('div');
                     trail.innerHTML = '✨';
@@ -1116,25 +1714,39 @@
         `;
         document.head.appendChild(trailStyles);
 
-        // Auto floating effect for Alexander
+        // Auto effects
         setInterval(() => {
-            if (Math.random() > 0.7) {
-                const floatingImages = document.querySelectorAll('.floating-alexander img, .floating-alexander-2 img');
-                floatingImages.forEach(img => {
-                    img.classList.add('floating-effect');
-                    setTimeout(() => {
-                        img.classList.remove('floating-effect');
-                    }, 3000);
-                });
+            if (Math.random() > 0.8) {
+                createStarShower();
             }
-        }, 15000);
+        }, 8000);
 
-        // Welcome animation with space sound
+        setInterval(() => {
+            if (Math.random() > 0.9) {
+                createMeteorShower();
+            }
+        }, 12000);
+
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                createUFOFlight();
+            }
+        }, 20000);
+
+        // Auto-activate audio context on first user interaction
+        document.addEventListener('click', function initAudio() {
+            initAudioContext();
+            document.removeEventListener('click', initAudio);
+        }, { once: true });
+
+        // Welcome animation with enhanced effects
         setTimeout(() => {
             createEmojiExplosion(['🚀', '👨‍🚀', '⭐', '🌟', '✨'], 'default');
+            createMeteorShower();
             playSpaceSound();
         }, 1000);
     </script>
+
 
 
 </body></html>
